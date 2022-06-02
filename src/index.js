@@ -7,7 +7,6 @@ import Adapter from '@magento/venia-ui/lib/components/Adapter';
 import { registerSW } from './registerSW';
 import './index.css';
 import App from '@magento/venia-ui/lib/components/App';
-import HelloWorld from './HelloWorld/helloWorldContainer';
 import { TestProvider } from './context/testContext';
 
 // server rendering differs from browser rendering
@@ -23,9 +22,7 @@ const styles = new Set();
 
 const tree = (
     <Adapter origin={origin} store={store} styles={styles}>
-        {/* <HelloWorld username="Magebit"/> */}
         <TestProvider>
-            <HelloWorld />
             <App />
         </TestProvider>
     </Adapter>

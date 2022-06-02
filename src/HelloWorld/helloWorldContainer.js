@@ -3,7 +3,7 @@ import TestContext from '../context/testContext';
 
 const HelloWorld = () => {
     const { username, setUsernameState } = useContext(TestContext);
-    setUsernameState('')
+    setUsernameState('Nabeel in Magebit')
     
   return (
       <>

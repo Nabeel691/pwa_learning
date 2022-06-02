@@ -43,6 +43,7 @@
     "@babel/plugin-transform-runtime": "~7.4.4",
     "@babel/preset-env": "~7.16.0",
     "@babel/runtime": "~7.15.3",
+    "@magebit/pwa-studio-override-resolver": "file:packages/@magebit/pwa-studio-override-resolver",
     "@magento/babel-preset-peregrine": "~1.2.1",
     "@magento/eslint-config": "~1.5.0",
     "@magento/pagebuilder": "~7.3.0",
