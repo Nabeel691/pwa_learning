@@ -7,7 +7,7 @@ const HelloWorld = () => {
     
   return (
       <>
-        {!username && <span>Hello world!, {HELLO_WORLD}</span>}
+        {!username && <span>Hello world!</span>}
         {username && <span>Hello, {username}</span>}
       </>
   )
