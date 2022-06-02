@@ -3,11 +3,11 @@ import TestContext from '../context/testContext';
 
 const HelloWorld = () => {
     const { username, setUsernameState } = useContext(TestContext);
-    setUsernameState('Nabeel in Magebit')
+    setUsernameState('')
     
   return (
       <>
-        {!username && <span>Hello world!</span>}
+        {!username && <span>Hello world!, {HELLO_WORLD}</span>}
         {username && <span>Hello, {username}</span>}
       </>
   )

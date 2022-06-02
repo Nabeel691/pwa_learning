@@ -119,6 +119,7 @@ module.exports = async env => {
                 ? JSON.stringify(process.env.STORE_VIEW_CODE)
                 : JSON.stringify(storeConfigData.code),
             AVAILABLE_STORE_VIEWS: JSON.stringify(availableStores),
+            HELLO_WORLD: JSON.stringify(process.env.HELLO_WORLD),
             DEFAULT_LOCALE: JSON.stringify(global.LOCALE),
             DEFAULT_COUNTRY_CODE: JSON.stringify(
                 process.env.DEFAULT_COUNTRY_CODE || 'US'
