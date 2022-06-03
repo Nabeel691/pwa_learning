@@ -1891,6 +1891,9 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@magebit/pwa-studio-override-resolver@file:packages/@magebit/pwa-studio-override-resolver":
+  version "0.0.1"
+
 "@magento/babel-preset-peregrine@~1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@magento/babel-preset-peregrine/-/babel-preset-peregrine-1.2.1.tgz#118995694d9aba2f158028f844b3066469b2c7db"

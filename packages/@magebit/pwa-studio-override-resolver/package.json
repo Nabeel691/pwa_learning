@@ -1,0 +1,21 @@
+{
+  "name": "@magebit/pwa-studio-override-resolver",
+  "version": "0.0.1",
+  "description": "Allow to override files from Venia UI and Peregrine",
+  "main": "./lib/PwaStudioResolverPlugin/index.js",
+  "files": [
+    "lib/*",
+    "lib/**/*",
+    "intercept.js"
+  ],
+  "author": "Magebit <info@magbeit.com>",
+  "license": "MIT",
+  "pwa-studio": {
+    "targets": {
+      "intercept": "./intercept"
+    }
+  },
+  "peerDependencies": {
+    "@magento/pwa-buildpack": "^8.0.0"
+  }
+}

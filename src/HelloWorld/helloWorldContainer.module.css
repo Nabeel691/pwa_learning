@@ -1,0 +1,16 @@
+.helloWorld {
+    /* Custom color from our preset */
+    composes: bg-blue-dark from global;
+
+    composes: font-semibold from global;
+    composes: text-center from global;
+
+    /* Custom value that is generated on fly */
+    composes: text-[#fff] from global;
+
+    /* Custom padding value from our preset */
+    composes: p-12.5 from global;
+
+    /* Margin for the large screen breakpoint */
+    composes: lg_mb-2 from global;
+}
