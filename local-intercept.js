@@ -16,7 +16,15 @@
  * with many customizations, this function would tap those targets and add
  * or modify functionality from its dependencies.
  */
-
 function localIntercept() {}
 
-module.exports = localIntercept;
+module.exports = (targets) => {
+    targets.of("@magento/venia-ui").routes.tap((routes) => {
+        routes.push({
+        name: "MyGreetingRoute",
+        pattern: "/greeting/:who?",
+        path: require.resolve("./src/components/GreetingPage/greetingPage.js"),
+        });
+        return routes;
+    });
+};
