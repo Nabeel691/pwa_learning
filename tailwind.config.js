@@ -11,7 +11,7 @@ const config = {
     presets: [venia, theme],
     // Configure how Tailwind statically analyzes your code here.
     // Note that the Tailwind's `jit` mode doesn't actually use PurgeCSS.
-    purge: {
+purge: {
         // Include paths to every file that may refer to Tailwind classnames.
         // Classnames not found in these files will be excluded at build time.
         content: [
