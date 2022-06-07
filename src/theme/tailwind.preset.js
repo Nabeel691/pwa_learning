@@ -2,13 +2,20 @@ module.exports = {
     theme: {
         colors: {
             blue: {
-                dark: '#00152E'
+                dark: '#00152E',
+                midBlueShade: '#1F39FF',
+            },
+            gray: {
+                grayCoose: '#DFE1E2'
             }
         },
         extend: {
             padding: {
-                '12.5': '3.125rem'
-            }
+                '2.5': '1.125rem'
+            },
+            fontSize: {
+                'mid': '2rem'
+            }, 
         }
     }
 };
