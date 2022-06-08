@@ -18,7 +18,7 @@
             'images quantity'
             'images cart'
             'images .';
-        grid-template-columns: minmax(0, 1.5625fr) minmax(0, 2fr);
+        grid-template-columns: minmax(0, 3.925fr) minmax(0, 4.7fr);
         grid-template-rows: repeat(5, min-content) 1fr [fold];
     }
 
@@ -28,9 +28,9 @@
 
     .options {
         display: grid;
-        border: 1px solid black;
+        border-bottom: 1px solid black;
         composes: grid-cols-2 from global;
-      
+        composes: border-b from global;
         composes: mx-sm from global;
         composes: py-0.5 from global;
     }
@@ -79,7 +79,7 @@
     composes: text-colorDefault from global;
 
     composes: lg_font-normal from global;
-    composes: text-mid from global;
+    composes: text-xl from global;
 }
 
 .productPrice {
@@ -87,7 +87,7 @@
     composes: block from global;
     composes: mb-2 from global;
     composes: font-semibold from global;
-    composes: text-2xl from global;
+    composes: text-xl from global;
     composes: text-blue-midBlueShade from global;
 }
 
@@ -115,6 +115,8 @@
     grid-area: images;
     grid-column: 1 / 2;
     grid-row: 1 / fold;
+    composes: pl-7 from global;
+    composes: pr-7 from global;
     composes: max-w-[640px] from global;
     composes: mx-auto from global;
     composes: my-0 from global;
@@ -133,9 +135,17 @@
     grid-area: errors;
 }
 
-.quantity {
+.productShippingActions {
     composes: section;
+    composes: py-6 from global;
+    composes: border-none from global;
     grid-area: quantity;
+}
+
+.shipping {
+    composes: w-full from global;
+    height: 11vh;
+    background-color: rgb(235, 235, 235);
 }
 
 .quantityTitle {
@@ -201,6 +211,19 @@
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
+
+    .productName {
+        font-size: 2rem;
+    }
+
+    .productPrice {
+        font-size: 2rem;
+    }
+    
+    .imageCarousel {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
 }
 
 .detailsTitle {
@@ -221,6 +244,10 @@
     composes: root from '@magento/venia-ui/lib/components/QuantityStepper/quantityStepper.module.css';
     grid-template-columns: auto 4rem auto;
     composes: justify-start from global;
+}
+
+.icon {
+    --stroke: white;
 }
 
 .unavailableContainer {

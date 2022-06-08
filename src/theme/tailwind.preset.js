@@ -4,6 +4,8 @@ module.exports = {
             blue: {
                 dark: '#00152E',
                 midBlueShade: '#1F39FF',
+                btnHover: '#5266FF',
+                btnPresses: '#1C33E5'
             },
             gray: {
                 grayCoose: '#DFE1E2'
@@ -14,7 +16,7 @@ module.exports = {
                 '2.5': '1.125rem'
             },
             fontSize: {
-                'mid': '2rem'
+                'dsktp': '2rem'
             }, 
         }
     }

@@ -10,16 +10,16 @@
 
 
 .carouselContainer {
-    border: 1px solid #F4F5F5;
     composes: grid from global;
+    border: 1px solid #F4F5F5;
     grid-area: main;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .imageContainer {
-    grid-area: 1 / 1 / 2 / 4;
+    grid-area: 1 / 1 / 2 / 5;
     left: 15%;
-    composes: w-3/4 from global;
+
 }
 
 .currentImage {
@@ -56,7 +56,7 @@
 .nextButton {
     composes: justify-end from global;
     composes: mr-sm from global;
-    grid-area: 1 / 4 / 2 / 4;
+    grid-area: 1 / 5 / 2 / 5;
 }
 
 .chevron {
@@ -94,6 +94,10 @@
 
 
 @media (min-width: 1024px) {
+    .carouselContainer {
+        height: 70vh;
+    }
+    
     .thumbnailList {
         column-gap: 2%;
         grid-template-columns: repeat(5, 0.2fr);

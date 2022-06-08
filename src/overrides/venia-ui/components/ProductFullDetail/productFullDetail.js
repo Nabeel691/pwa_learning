@@ -7,13 +7,14 @@ import { Info } from 'react-feather';
 import Price from '@magento/venia-ui/lib/components/Price';
 import { useProductFullDetail } from '@magento/peregrine/lib/talons/ProductFullDetail/useProductFullDetail';
 import { isProductConfigurable } from '@magento/peregrine/lib/util/isProductConfigurable';
-
+import { ShoppingBag as ShoppingCartIcon } from 'react-feather';
+import Icon from '@magento/venia-ui/lib/components/Icon';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import Breadcrumbs from '@magento/venia-ui/lib/components/Breadcrumbs';
-import Button from '@magento/venia-ui/lib/components/Button';
+import Button from '../Button';
 import Carousel from '@magento/venia-ui/lib/components/ProductImageCarousel';
 import FormError from '@magento/venia-ui/lib/components/FormError';
-import QuantityStepper from '@magento/venia-ui/lib/components/QuantityStepper';
+import QuantityStepper from '../QuantityStepper';
 import RichContent from '@magento/venia-ui/lib/components/RichContent/richContent';
 import { ProductOptionsShimmer } from '@magento/venia-ui/lib/components/ProductOptions';
 import CustomAttributes from '@magento/venia-ui/lib/components/ProductFullDetail/CustomAttributes';
@@ -58,6 +59,7 @@ const ProductFullDetail = props => {
     const { formatMessage } = useIntl();
 
     const classes = useStyle(defaultClasses, props.classes);
+    const iconClasses = { root: classes.icon };
 
     const options = isProductConfigurable(product) ? (
         <Suspense fallback={<ProductOptionsShimmer />}>
@@ -170,23 +172,22 @@ const ProductFullDetail = props => {
     const cartCallToActionText = !isOutOfStock ? (
         <FormattedMessage
             id="productFullDetail.addItemToCart"
-            defaultMessage="Add to Cart"
+            defaultMessage="Add to cart"
         />
     ) : (
         <FormattedMessage
             id="productFullDetail.itemOutOfStock"
-            defaultMessage="Out of Stock"
+            defaultMessage="Out of stock"
         />
     );
 
     const cartActionContent = isSupportedProductType ? (
         <Button
             data-cy="ProductFullDetail-addToCartButton"
-            disabled={isAddToCartDisabled}
             priority="high"
             type="submit"
         >
-            {cartCallToActionText}
+            <Icon  classes={iconClasses} src={ShoppingCartIcon} /> {cartCallToActionText}
         </Button>
     ) : (
         <div className={classes.unavailableContainer}>
@@ -279,27 +280,16 @@ const ProductFullDetail = props => {
                     errors={errors.get('form') || []}
                 />
                 <section className={classes.options}>{options}</section>
-                <section className={classes.quantity}>
-                    <span
-                        data-cy="ProductFullDetail-quantityTitle"
-                        className={classes.quantityTitle}
-                    >
-                        <FormattedMessage
-                            id={'global.quantity'}
-                            defaultMessage={'Quantity'}
-                        />
-                    </span>
+                <section className={classes.productShippingActions}>
+                    <div className={classes.shipping}>
+                        Shipping content goes here
+                    </div>
                     <QuantityStepper
                         classes={{ root: classes.quantityRoot }}
                         min={1}
                         message={errors.get('quantity')}
                     />
-                </section>
-                <section className={classes.actions}>
                     {cartActionContent}
-                    <Suspense fallback={null}>
-                        <WishlistButton {...wishlistButtonProps} />
-                    </Suspense>
                 </section>
                 <section className={classes.description}>
                     <span

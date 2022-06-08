@@ -57,7 +57,7 @@ const Option = props => {
     ]);
 
     const classes = useStyle(defaultClasses, props.classes);
-    console.log(classes, "aaaasd")
+
     return (
         <div className={classes.root} data-cy="ProductOptions-Option-root">
             <span className={classes.title}>{label}</span>
