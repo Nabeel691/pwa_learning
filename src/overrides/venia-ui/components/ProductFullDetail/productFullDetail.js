@@ -19,6 +19,7 @@ import RichContent from '@magento/venia-ui/lib/components/RichContent/richConten
 import { ProductOptionsShimmer } from '@magento/venia-ui/lib/components/ProductOptions';
 import CustomAttributes from '@magento/venia-ui/lib/components/ProductFullDetail/CustomAttributes';
 import defaultClasses from './productFullDetail.module.css';
+import Tabs from '../../../../components/Tabs';
 
 const WishlistButton = React.lazy(() => import('@magento/venia-ui/lib/components/Wishlist/AddToListButton'));
 const Options = React.lazy(() => import('@magento/venia-ui/lib/components/ProductOptions'));
@@ -217,30 +218,21 @@ const ProductFullDetail = props => {
         </section>
     ) : null;
 
+    const tabsData = [
+        {
+            tabTitle: "Description",
+            textContentTitle: "title:Product Description",
+            content: productDetails.shortDescription.html ? productDetails.shortDescription.html.replace(/<p>|<\/p>/g, "").trim() : "No short description found"
+            
+            
+        },
+        {
+            tabTitle: "Attributes",
+            textContentTitle: <h1>{'Product Attributes'}</h1>,
+            content: <CustomAttributes customAttributes={customAttributesDetails.list} />
+        }
+    ]
     
-    const productDescription = productDetails.description.replace(/<p>|<\/p>/g, "").trim().split("Features:");
-    
-    const productDescriptionHtml = productDescription && productDescription.length ? (
-        <p className={classes.productDescription}>
-            {productDescription[0]}
-        </p>
-    ) : '';
-
-    const productFeaturesHtml = productDescription && productDescription.length ? (
-        <ul className={classes.productFeatures}>
-            {
-                productDescription[1].replace(/<ul>|<\/ul>|<\/li>/g, '').trim().split('<li>').map((item, index) => {
-                    return (index <= 3 && item !== '' && (
-                        <li className={classes.feature}>
-                            <span className={classes.featureText}>{item}</span>
-                        </li>
-                    ))
-                        
-                    
-                })
-            }
-        </ul>
-    ) : '';
 
     return (
         <Fragment>
@@ -270,8 +262,7 @@ const ProductFullDetail = props => {
                         />
                     </p>
                     
-                    {productDescriptionHtml}
-                    {productFeaturesHtml}
+                    <RichContent classes={{root: classes.richContentRoot}} html={productDetails.description} />
                 </section>
                 <FormError
                     classes={{
@@ -291,34 +282,16 @@ const ProductFullDetail = props => {
                     />
                     {cartActionContent}
                 </section>
-                <section className={classes.description}>
-                    <span
-                        data-cy="ProductFullDetail-descriptionTitle"
-                        className={classes.descriptionTitle}
-                    >
-                        <FormattedMessage
-                            id={'productFullDetail.description'}
-                            defaultMessage={'Description'}
-                        />
-                    </span>
-                    <RichContent html={productDetails.description} />
-                </section>
-                <section className={classes.details}>
-                    <span
-                        data-cy="ProductFullDetail-detailsTitle"
-                        className={classes.detailsTitle}
-                    >
-                        <FormattedMessage
-                            id={'productFullDetail.details'}
-                            defaultMessage={'Details'}
-                        />
-                    </span>
-                    <CustomAttributes
-                        customAttributes={customAttributesDetails.list}
-                    />
-                </section>
                 {pageBuilderAttributes}
+                
             </Form>
+            <Tabs active={0}>
+                {
+                    tabsData.map((item, index) => (
+                        <Tabs.TabsPane key={index} title={item.tabTitle}>{[item.textContentTitle, item.content]}</Tabs.TabsPane>
+                    ))
+                }
+            </Tabs>
         </Fragment>
     );
 };
@@ -374,3 +347,4 @@ ProductFullDetail.propTypes = {
 };
 
 export default ProductFullDetail;
+

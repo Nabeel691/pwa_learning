@@ -8,7 +8,8 @@ module.exports = {
                 btnPresses: '#1C33E5'
             },
             gray: {
-                grayCoose: '#DFE1E2'
+                grayCoose: '#DFE1E2',
+                tabActive: '#F4F5F5'
             }
         },
         extend: {

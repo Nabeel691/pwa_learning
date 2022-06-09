@@ -68,9 +68,13 @@
     composes: px-sm from global;
     composes: py-xs from global;
     grid-area: title;
-    grid-template-areas: "productName productName productName price" 
-    "productDescription productDescription productDescription productDescription" 
-    "productFeatures productFeatures productFeatures productFeatures";
+    grid-template-areas: "productName productName productName price"
+    "richContent richContent richContent richContent";
+}
+
+.richContentRoot {
+    composes: root from '@magento/venia-ui/lib/components/RichContent/richContent.module.css';
+    grid-area: richContent;
 }
 
 .productName {
@@ -165,7 +169,8 @@
 
 .description {
     composes: section;
-    grid-column: 1 / span 1;
+    width: 100%;
+    grid-column: 1 / 1 / 1 / 1;
     grid-row: fold / span 1;
 
     composes: lg_border-t from global;
@@ -179,17 +184,6 @@
     composes: sectionTitle;
 }
 
-.details {
-    composes: section;
-    grid-column: 2 / span 1;
-    grid-row: fold / span 1;
-
-    composes: lg_border-t from global;
-    composes: lg_m-0 from global;
-    composes: lg_pl-sm from global;
-    composes: lg_pr-sm from global;
-    composes: lg_self-stretch from global;
-}
 
 .detailsPageBuilder {
     composes: my-0 from global;
