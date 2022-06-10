@@ -28,7 +28,6 @@
 
     .options {
         display: grid;
-        border-bottom: 1px solid black;
         composes: grid-cols-2 from global;
         composes: border-b from global;
         composes: mx-sm from global;
@@ -60,6 +59,7 @@
 
 .title {
     composes: section;
+    composes: border-gray-grayCoose from global;
     composes: gap-y-6 from global;
     composes: grid from global;
     composes: grid-cols-4 from global;
@@ -69,7 +69,8 @@
     composes: py-xs from global;
     grid-area: title;
     grid-template-areas: "productName productName productName price"
-    "richContent richContent richContent richContent";
+    "productDescription productDescription productDescription productDescription"
+    "productFeatures productFeatures productFeatures  productFeatures";
 }
 
 .richContentRoot {
@@ -77,11 +78,23 @@
     grid-area: richContent;
 }
 
+.richContentRoot ul {
+    list-style-type: none;
+}
+
+.richContentRoot ul li::before {
+    content: "\2022";
+    color: #1F39FF;
+    font-weight: bold;
+    display: inline-block;
+    width: 1.5em;
+    margin-left: -1.5em;
+}
+
 .productName {
     grid-area: productName;
     composes: font-normal from global;
     composes: text-colorDefault from global;
-
     composes: lg_font-normal from global;
     composes: text-xl from global;
 }
@@ -132,6 +145,7 @@
 
 .options {
     grid-area: options;
+    composes: border-gray-grayCoose from global;
 }
 
 .formErrors {
@@ -197,6 +211,27 @@
     list-style: none;
 }
 
+:global .shippingBlock {
+    flex-direction: row !important;
+    padding: 20px 50px !important;
+    width: 100% !important;
+}
+
+:global .paidShippingBlock {
+    border-bottom: 1px solid #DFE1E2;
+}
+
+:global .shippingText {
+    margin-top: 10px !important;
+    margin-left: 30px !important;
+}
+
+:global .priceText {
+    margin-left: -125px !important;
+    margin-top: 38px !important;
+}
+
+
 @media (min-width: 1024px) {
     .details {
         align-self: stretch;
@@ -217,6 +252,17 @@
     .imageCarousel {
         padding-left: 0px;
         padding-right: 0px;
+    }
+
+    :global .shippingBlock {
+        flex-direction: row !important;
+        padding: 20px 70px !important;
+        width: 100% !important;
+    }
+
+    :global .paidShippingBlock {
+        border-bottom: 0px;
+        border-right: 1px solid #DFE1E2;
     }
 }
 

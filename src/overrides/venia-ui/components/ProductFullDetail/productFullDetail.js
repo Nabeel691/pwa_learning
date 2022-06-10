@@ -20,6 +20,7 @@ import { ProductOptionsShimmer } from '@magento/venia-ui/lib/components/ProductO
 import CustomAttributes from '@magento/venia-ui/lib/components/ProductFullDetail/CustomAttributes';
 import defaultClasses from './productFullDetail.module.css';
 import Tabs from '../../../../components/Tabs';
+import CmsBlock from '@magento/venia-ui/lib/components/CmsBlock';
 
 const WishlistButton = React.lazy(() => import('@magento/venia-ui/lib/components/Wishlist/AddToListButton'));
 const Options = React.lazy(() => import('@magento/venia-ui/lib/components/ProductOptions'));
@@ -232,7 +233,41 @@ const ProductFullDetail = props => {
             content: <CustomAttributes customAttributes={customAttributesDetails.list} />
         }
     ]
-    
+
+    const stripHtml = (html) => {
+        var textarea = document.createElement("textarea");
+        textarea.innerHTML = html;
+        var temporalDivElement = document.createElement("p");
+        temporalDivElement.innerHTML = textarea.value;
+        return temporalDivElement.textContent || temporalDivElement.innerText || "";
+    }
+
+    console.log(stripHtml(productDetails.description));
+
+    const productDescriptionContent = stripHtml(productDetails.description).split("Features:"); 
+
+    const productDescriptionHtml = (
+        <p className={classes.productDescription}>
+            {productDescriptionContent[0]}
+        </p>
+    );
+
+    console.log(productDescriptionContent[1].split(/(?=[A-Z])/))
+
+    const productFeaturesHtml =  (
+        <ul className={classes.productFeatures}>
+            {
+                productDescriptionContent[1].split(/(?=[A-Z])/).map((item, index) => {
+                    return (index <= 2 && item !== '' && (
+                        <li className={classes.feature}>
+                            <span className={classes.featureText}>{item.replace(/([/|&|*|(|)]+)/, '')}</span>
+                        </li>
+                    ))
+                })
+            }
+        </ul>
+    );
+
 
     return (
         <Fragment>
@@ -261,8 +296,8 @@ const ProductFullDetail = props => {
                             value={productDetails.price.value}
                         />
                     </p>
-                    
-                    <RichContent classes={{root: classes.richContentRoot}} html={productDetails.description} />
+                    {productDescriptionHtml}
+                    {productFeaturesHtml}
                 </section>
                 <FormError
                     classes={{
@@ -272,9 +307,7 @@ const ProductFullDetail = props => {
                 />
                 <section className={classes.options}>{options}</section>
                 <section className={classes.productShippingActions}>
-                    <div className={classes.shipping}>
-                        Shipping content goes here
-                    </div>
+                    <CmsBlock identifiers="sp_block"/>
                     <QuantityStepper
                         classes={{ root: classes.quantityRoot }}
                         min={1}
