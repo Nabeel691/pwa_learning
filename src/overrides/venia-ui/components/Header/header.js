@@ -53,14 +53,7 @@ const Header = props => {
 
     return (
         <Fragment>
-            <div className={classes.switchersContainer}>
-                <div className={classes.switchers} data-cy="Header-switchers">
-                    <StoreSwitcher />
-                    <CurrencySwitcher />
-                </div>
-            </div>
             <header className={rootClass} data-cy="Header-root">
-                <HelloWorld />
                 <div className={classes.toolbar}>
                     <div className={classes.primaryActions}>
                         <NavTrigger />

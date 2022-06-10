@@ -1,0 +1,106 @@
+.root {
+    composes: lg_gap-sm from global;
+    composes: grid from global;
+    composes: grid-cols-auto from global;
+    composes: grid-rows-auto from global;
+    grid-template-areas:
+        'main'
+        'thumbs';
+}
+
+
+.carouselContainer {
+    composes: grid from global;
+    border: 1px solid #F4F5F5;
+    grid-area: main;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.imageContainer {
+    grid-area: 1 / 1 / 2 / 5;
+    left: 15%;
+
+}
+
+.currentImage {
+    composes: block from global;
+    composes: h-full from global;
+    composes: object-center from global;
+    composes: object-contain from global;
+    composes: w-full from global;
+
+    composes: lg_object-top from global;
+}
+
+.currentImage_placeholder {
+    composes: currentImage;
+
+    composes: bg-subtle from global;
+}
+
+.previousButton,
+.nextButton {
+    composes: flex from global;
+    composes: outline-none from global;
+    composes: z-foreground from global;
+
+    composes: lg_hidden from global;
+}
+
+.previousButton {
+    composes: justify-start from global;
+    composes: ml-sm from global;
+    grid-area: 1 / 1 / 2 / 1;
+}
+
+.nextButton {
+    composes: justify-end from global;
+    composes: mr-sm from global;
+    grid-area: 1 / 5 / 2 / 5;
+}
+
+.chevron {
+    composes: root from '@magento/venia-ui/lib/components/Icon/icon.module.css';
+
+    composes: border-2 from global;
+    composes: border-solid from global;
+    composes: border-transparent from global;
+    composes: self-center from global;
+}
+
+/* TODO @TW: cannot compose */
+.nextButton:focus > .chevron,
+.previousButton:focus > .chevron {
+    box-shadow: 0 0 4px 2px rgb(var(--venia-global-color-teal));
+    border-radius: 0.5rem;
+}
+
+.thumbnailList {
+    composes: content-stretch from global;
+    composes: gap-xs from global;
+    composes: grid from global;
+    composes: grid-cols-carouselThumbnailList from global;
+    composes: grid-flow-col from global;
+    composes: justify-center from global;
+    composes: mt-xs from global;
+    composes: z-foreground from global;
+
+    composes: lg_content-start from global;
+    composes: lg_gap-sm from global;
+    composes: lg_grid-cols-[1fr] from global;
+    composes: lg_grid-flow-row from global;
+    composes: lg_mt-0 from global;
+}
+
+
+@media (min-width: 1024px) {
+    .carouselContainer {
+        height: 70vh;
+    }
+    
+    .thumbnailList {
+        column-gap: 2%;
+        grid-template-columns: repeat(5, 0.2fr);
+      }
+}
+

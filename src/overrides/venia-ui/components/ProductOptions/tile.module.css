@@ -1,0 +1,22 @@
+.root {
+    composes: border from global;
+    composes: border-solid from global;
+    composes: border-gray-grayCoose from global;
+    composes: h-[3rem] from global;
+    composes: min-w-[3rem] from global;
+}
+
+.root_selected {
+    composes: root;
+
+    composes: bg-gray-900 from global;
+    composes: text-white from global;
+}
+
+.root_focused {
+    composes: root;
+}
+
+.root_selected_focused {
+    composes: root_selected;
+}
