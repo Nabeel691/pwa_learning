@@ -211,6 +211,11 @@
     list-style: none;
 }
 
+.tabTitle {
+    composes: font-bold from global;
+    composes: mb-8 from global;
+}
+
 :global .shippingBlock {
     flex-direction: row !important;
     padding: 20px 50px !important;

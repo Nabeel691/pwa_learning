@@ -222,18 +222,15 @@ const ProductFullDetail = props => {
     const tabsData = [
         {
             tabTitle: "Description",
-            textContentTitle: "title:Product Description",
-            content: productDetails.shortDescription.html ? productDetails.shortDescription.html.replace(/<p>|<\/p>/g, "").trim() : "No short description found"
-            
-            
+            content: [<h1 className={classes.tabTitle}>Product Description</h1>, productDetails.shortDescription.html ? <RichContent html={productDetails.shortDescription.html} /> : <RichContent html={"<p>No short description found</p>"} />]
         },
         {
             tabTitle: "Attributes",
-            textContentTitle: <h1>{'Product Attributes'}</h1>,
-            content: <CustomAttributes customAttributes={customAttributesDetails.list} />
+            content: [<h1 className={classes.tabTitle}>Product Attributes</h1>, <CustomAttributes customAttributes={customAttributesDetails.list} />]
         }
     ]
 
+    // The function stripHtml strips html tags from an html string and returns the text inside of it. 
     const stripHtml = (html) => {
         var textarea = document.createElement("textarea");
         textarea.innerHTML = html;
@@ -242,8 +239,6 @@ const ProductFullDetail = props => {
         return temporalDivElement.textContent || temporalDivElement.innerText || "";
     }
 
-    console.log(stripHtml(productDetails.description));
-
     const productDescriptionContent = stripHtml(productDetails.description).split("Features:"); 
 
     const productDescriptionHtml = (
@@ -251,8 +246,6 @@ const ProductFullDetail = props => {
             {productDescriptionContent[0]}
         </p>
     );
-
-    console.log(productDescriptionContent[1].split(/(?=[A-Z])/))
 
     const productFeaturesHtml =  (
         <ul className={classes.productFeatures}>
@@ -318,13 +311,7 @@ const ProductFullDetail = props => {
                 {pageBuilderAttributes}
                 
             </Form>
-            <Tabs active={0}>
-                {
-                    tabsData.map((item, index) => (
-                        <Tabs.TabsPane key={index} title={item.tabTitle}>{[item.textContentTitle, item.content]}</Tabs.TabsPane>
-                    ))
-                }
-            </Tabs>
+            <Tabs tabsData={tabsData} active={0}/>
         </Fragment>
     );
 };

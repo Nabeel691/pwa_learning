@@ -1,8 +1,9 @@
 .tabsContainer {
     composes: pl-8 from global;
     composes: pr-8 from global;
+    composes: lg_p-0 from global;
 }
-.tabs {
+.tabsList {
     composes: flex from global;
     composes: flex-wrap from global;
     composes: border-b from global;
@@ -16,6 +17,7 @@
     composes: pl-8 from global;
     composes: pr-8 from global;
     composes: cursor-pointer from global;
+    composes: lg_px-10 from global;
     border: 1px solid #DFE1E2;
     border-bottom: 0px;
 }
@@ -29,24 +31,8 @@
     composes: pb-4 from global;
 }
 
-.title {
-    composes: font-bold from global;
-}
-
 .descriptionText {
     composes: mt-3 from global;
     composes: text-sm from global;
 }
 
-@media (min-width: 1024px) {
-
-    .tabsContainer {
-       padding: 0px;
-    }
-
-    .tab {
-        composes: pl-10 from global;
-        composes: pr-10 from global;
-    }   
-
-}
