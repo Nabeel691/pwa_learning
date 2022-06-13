@@ -79,24 +79,24 @@
 }
 
 .richContentRoot ul {
-    list-style-type: none;
+    @apply list-none;
 }
 
 .richContentRoot ul li::before {
-    content: "\2022";
-    color: #1F39FF;
-    font-weight: bold;
-    display: inline-block;
-    width: 1.5em;
-    margin-left: -1.5em;
+    @apply content-["\2022"];
+    @apply text-blue-midBlueShade;
+    @apply font-bold;
+    @apply inline-block;
+    @apply w-6;
+    @apply ml-[-24px];
 }
 
 .productName {
     grid-area: productName;
     composes: font-normal from global;
     composes: text-colorDefault from global;
-    composes: lg_font-normal from global;
     composes: text-xl from global;
+    composes: lg_text-2xl from global;
 }
 
 .productPrice {
@@ -106,6 +106,7 @@
     composes: font-semibold from global;
     composes: text-xl from global;
     composes: text-blue-midBlueShade from global;
+    composes: lg_text-2xl from global;
 }
 
 .productDescription {
@@ -141,6 +142,7 @@
     composes: lg_m-0 from global;
     composes: lg_px-0 from global;
     composes: lg_py-sm from global;
+    composes: lg_px-0 from global;
 }
 
 .options {
@@ -183,7 +185,7 @@
 
 .description {
     composes: section;
-    width: 100%;
+    composes: w-full from global;
     grid-column: 1 / 1 / 1 / 1;
     grid-row: fold / span 1;
 
@@ -217,59 +219,32 @@
 }
 
 :global .shippingBlock {
-    flex-direction: row !important;
-    padding: 20px 50px !important;
-    width: 100% !important;
+    @apply flex-row !important;
+    @apply py-5 !important;
+    @apply px-24 !important;
+    @apply lg_px-20 !important;
+    @apply w-full !important;
 }
 
 :global .paidShippingBlock {
-    border-bottom: 1px solid #DFE1E2;
+    @apply border-b !important;
+    @apply border-solid !important;
+    @apply border-gray-grayCoose !important;
+    @apply md_border-b-0 !important;
+    @apply md_border-r !important;
+    @apply md_border-gray-grayCoose !important;
 }
 
 :global .shippingText {
-    margin-top: 10px !important;
-    margin-left: 30px !important;
+    @apply mt-2.5 !important;
+    @apply ml-7 !important;
 }
 
 :global .priceText {
-    margin-left: -125px !important;
-    margin-top: 38px !important;
+    @apply ml-[-125px] !important;
+    @apply mt-[38px] !important;
 }
 
-
-@media (min-width: 1024px) {
-    .details {
-        align-self: stretch;
-        border-top-width: 1px;
-        margin: 0;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
-
-    .productName {
-        font-size: 2rem;
-    }
-
-    .productPrice {
-        font-size: 2rem;
-    }
-    
-    .imageCarousel {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-
-    :global .shippingBlock {
-        flex-direction: row !important;
-        padding: 20px 70px !important;
-        width: 100% !important;
-    }
-
-    :global .paidShippingBlock {
-        border-bottom: 0px;
-        border-right: 1px solid #DFE1E2;
-    }
-}
 
 .detailsTitle {
     composes: sectionTitle;
@@ -287,8 +262,8 @@
 
 .quantityRoot {
     composes: root from '@magento/venia-ui/lib/components/QuantityStepper/quantityStepper.module.css';
-    grid-template-columns: auto 4rem auto;
     composes: justify-start from global;
+    grid-template-columns: auto 4rem auto;
 }
 
 .icon {

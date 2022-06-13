@@ -222,11 +222,18 @@ const ProductFullDetail = props => {
     const tabsData = [
         {
             tabTitle: "Description",
-            content: [<h1 className={classes.tabTitle}>Product Description</h1>, productDetails.shortDescription.html ? <RichContent html={productDetails.shortDescription.html} /> : <RichContent html={"<p>No short description found</p>"} />]
+            content:   <React.Fragment>
+                            <h1 className={classes.tabTitle}>Product Description</h1>
+                            {productDetails.shortDescription.html ? <RichContent html={productDetails.shortDescription.html} /> : <RichContent html={"<p>No short description found</p>"} />}
+                       </React.Fragment> 
+            
         },
         {
             tabTitle: "Attributes",
-            content: [<h1 className={classes.tabTitle}>Product Attributes</h1>, <CustomAttributes customAttributes={customAttributesDetails.list} />]
+            content: <React.Fragment>
+                        <h1 className={classes.tabTitle}>Product Attributes</h1>
+                        <CustomAttributes customAttributes={customAttributesDetails.list} />
+                    </React.Fragment>
         }
     ]
 

@@ -14,7 +14,9 @@ module.exports = {
         },
         extend: {
             padding: {
-                '2.5': '1.125rem'
+                '2.5': '1.125rem',
+                '3.125': '3.125',
+                '4.375': '4.375',
             },
             fontSize: {
                 'dsktp': '2rem'
