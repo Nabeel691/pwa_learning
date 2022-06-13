@@ -13,14 +13,14 @@ const Tabs = ({ tabsData, active = 0 }) => {
         <ul className={classes.tabsList}>
             {
             tabsData.map((item, index) => (
-                <li className={`${classes.tab} ${index === activeTab && classes.activeTab}`} onClick={() => setActiveTabIndex(index)}>{ item.tabTitle }</li>
+                <li className={`${classes.tab} ${index === activeTab && classes.activeTab}`} onClick={() => setActiveTabIndex(index)} key={index}>{ item.tabTitle }</li>
             ))}
         </ul>
         <div className={classes.textContainer}>
             {tabsData[activeTab].content.map((ElementItem, index) => (
                     React.cloneElement(ElementItem, {key:`content-${index}`}) 
             ))}
-        </div>
+        </div> 
     </div>
   )
 }
