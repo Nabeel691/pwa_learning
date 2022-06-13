@@ -12,4 +12,4 @@ merged-schema*.json
 test-report.xml
 test-results.json
 yarn-error.log
-template.generated.html
+
