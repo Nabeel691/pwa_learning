@@ -17,10 +17,8 @@ const Tabs = ({ tabsData, active = 0 }) => {
             ))}
         </ul>
         <div className={classes.textContainer}>
-            {tabsData[activeTab].content.map((ElementItem, index) => (
-                    React.cloneElement(ElementItem, {key:`content-${index}`}) 
-            ))}
-        </div> 
+            {tabsData[activeTab].content}
+        </div>  
     </div>
   )
 }

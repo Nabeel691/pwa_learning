@@ -11,6 +11,9 @@
 }
 
 .tab {
+    composes: border from global;
+    composes: border-solid from global;
+    composes: border-gray-grayCoose from global;
     composes: font-bold from global;
     composes: pt-4 from global;
     composes: pb-4 from global;
@@ -18,8 +21,7 @@
     composes: pr-8 from global;
     composes: cursor-pointer from global;
     composes: lg_px-10 from global;
-    border: 1px solid #DFE1E2;
-    border-bottom: 0px;
+    composes: border-b-0 from global;
 }
 
 .activeTab {
