@@ -58,7 +58,7 @@ const ProductFullDetail = props => {
         wishlistButtonProps
     } = talonProps;
 
-    const { formatMessage } = useIntl();
+    const { formatMessage, locale } = useIntl();
 
     const classes = useStyle(defaultClasses, props.classes);
     const iconClasses = { root: classes.icon };
@@ -223,15 +223,22 @@ const ProductFullDetail = props => {
         {
             tabTitle: "Description",
             content:   <React.Fragment>
-                            <h1 className={classes.tabTitle}>Product Description</h1>
+                            <h1 className={classes.tabTitle}>
+                                <FormattedMessage
+                                    id="productFullDetail.productDescription"
+                                    defaultMessage="Product Description"/>
+                            </h1>
                             {productDetails.shortDescription.html ? <RichContent html={productDetails.shortDescription.html} /> : <RichContent html={"<p>No short description found</p>"} />}
-                       </React.Fragment> 
-            
+                       </React.Fragment>             
         },
         {
             tabTitle: "Attributes",
             content: <React.Fragment>
-                        <h1 className={classes.tabTitle}>Product Attributes</h1>
+                        <h1 className={classes.tabTitle}>
+                        <FormattedMessage
+                                    id="productFullDetail.productAttributes"
+                                    defaultMessage="Product Attributes"/>
+                        </h1>
                         <CustomAttributes customAttributes={customAttributesDetails.list} />
                     </React.Fragment>
         }
@@ -319,7 +326,7 @@ const ProductFullDetail = props => {
                 
             </Form>
             <Tabs tabsData={tabsData} active={0}/>
-        </Fragment>
+        </Fragment> 
     );
 };
 
